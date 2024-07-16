@@ -55,26 +55,24 @@ export default function SignIn() {
         "
       >
         <EmailPassword placeholder="Email address" />
-        <div>
-          <span
-            className="
-              w-full
-              flex
-              items-center
-              justify-center
-              gap-x-4
-              before:w-full
-              after:w-full
-              before:h-[1px]
-              after:h-[1px]
-              after:bg-gray-300
-              before:bg-gray-300
-              text-gray-300
-            "
-          >
-            or
-          </span>
-        </div>
+        <span
+          className="
+            w-full
+            flex
+            items-center
+            justify-center
+            gap-x-4
+            before:w-full
+            after:w-full
+            before:h-[1px]
+            after:h-[1px]
+            after:bg-gray-300
+            before:bg-gray-300
+            text-gray-300
+          "
+        >
+          or
+        </span>
         <GoogleButton />
         <div
           className="

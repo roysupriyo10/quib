@@ -73,9 +73,23 @@ const config: Config = {
           900: "#736638",
           1000: "#594F2B",
         },
+        error: {
+          50: '#FEF3F2',
+          100: '#FFE3E1',
+          200: '#FFCCC8',
+          300: '#FFA9A2',
+          400: '#FC776D',
+          500: '#F44C3F',
+          600: '#E33629',
+          700: '#BE2317',
+          800: '#9D2017',
+          900: '#82211A',
+          950: '#470C08'
+        },
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animated")],
+} satisfies Config;
+
 export default config;

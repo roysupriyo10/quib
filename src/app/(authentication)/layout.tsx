@@ -1,3 +1,4 @@
+import { Logo } from "#/components";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({
       "
     >
       <header>
-        <h1>Logo</h1>
+        <Logo />
       </header>
       {children}
     </main>

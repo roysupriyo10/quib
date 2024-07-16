@@ -13,7 +13,6 @@ const ImageStack: FC<ImageStackProps> = ({
   className = "",
 }) => {
   const width = images.length * 24 - (images.length - 1) * 8;
-  console.log(width);
   return (
     <div
       style={{
