@@ -1,11 +1,7 @@
 import { AuthFormContextType } from "#/@types";
 
 export function parseZodFormMessage(message: string): AuthFormContextType {
-  console.log(message);
-
   const [name, errorMessage] = message.split(";;");
-
-  console.log(name, errorMessage);
 
   if (!name || !errorMessage) {
     throw new Error("Corrupted format of message passed.");

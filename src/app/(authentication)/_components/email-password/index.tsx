@@ -1,20 +1,18 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import "./email-password.css";
 import EmailForm from "./email-form";
 import PasswordForm from "./password-form";
 
 const EmailPassword: FC = () => {
-  const [emailEntered, setEmailEntered] = useState<boolean>(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setEmailEntered(true);
-    }, 5000);
-
-    return () => clearTimeout(timeout);
-  }, []);
+  const [emailEntered, setEmailEntered] = useState<{
+    validated: boolean;
+    email: string;
+  }>({
+    validated: false,
+    email: "",
+  });
 
   return (
     <div
@@ -28,9 +26,19 @@ const EmailPassword: FC = () => {
       `}
     >
       <EmailForm
-        onFocus={() => setEmailEntered(false)}
-        onSubmit={() => setEmailEntered(true)}
-        showSubmit={!emailEntered}
+        onFocus={() =>
+          setEmailEntered({
+            validated: false,
+            email: "",
+          })
+        }
+        onSubmit={(email) => {
+          setEmailEntered({
+            email,
+            validated: true,
+          });
+        }}
+        showSubmit={!emailEntered.validated}
       />
       <span
         className={`
@@ -39,9 +47,10 @@ const EmailPassword: FC = () => {
           duration-300
           ease-linear
           ${
-            emailEntered
+            emailEntered.validated
               ? `
-                my-2
+                mt-2
+                mb-2.5
                 h-[1px]
               `
               : `
@@ -49,15 +58,12 @@ const EmailPassword: FC = () => {
               `
           }
         `}
-      ></span>
-      <PasswordForm
-        style={{
-          transition: "height 0.3s ease-in-out",
-          opacity: emailEntered ? 1 : 0,
-          maxHeight: emailEntered ? "100px" : 0,
-          pointerEvents: emailEntered ? "auto" : "none"
-        }}
       />
+      {emailEntered.validated && (
+        <PasswordForm
+          email={emailEntered.email}
+        />
+      )}
     </div>
   );
 };

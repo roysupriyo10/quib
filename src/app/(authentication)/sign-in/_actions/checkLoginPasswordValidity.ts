@@ -1,27 +1,29 @@
 "use server";
 
 import { AuthFormContextType } from "#/@types";
-import { checkEmailValidity } from "#/services";
+import { checkPasswordValidity } from "#/services";
 import { fromErrorToFormState } from "#/utils";
-import { EmailValidityFormValidation } from "#/validation";
+import { PasswordValidityFormValidation } from "#/validation";
 
-export async function checkLoginEmailValidityAction(
+export async function checkLoginPasswordValidityAction(
   _state: AuthFormContextType,
   formData: FormData,
 ): Promise<AuthFormContextType> {
   try {
-    const params = EmailValidityFormValidation.parse({
+    const params = PasswordValidityFormValidation.parse({
       email: formData.get("email"),
+      password: formData.get("password"),
     });
 
-    const canLogin = await checkEmailValidity({
+    const user = await checkPasswordValidity({
       email: params.email,
+      password: params.password,
     });
 
-    if (!canLogin) {
+    if (!user) {
       return {
-        name: "email",
-        message: "This email is not registered.",
+        name: "password",
+        message: "Password does not match.",
       };
     }
 
