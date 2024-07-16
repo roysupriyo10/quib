@@ -1,19 +1,70 @@
+import { getTemplateImages, getUserAvatars } from "#/services";
 import { FC, ReactNode } from "react";
+import TemplateScrollRibbon from "./template-scroll";
+import { ImageStack } from "#/shared";
 
 type AuthenticationSectionProps = {
   children: ReactNode;
+  className?: string;
 };
 
-const AuthenticationSection: FC<AuthenticationSectionProps> = ({
+const AuthenticationSection: FC<AuthenticationSectionProps> = async ({
   children,
+  className = "",
 }) => {
+  const templateImages = await getTemplateImages();
+  const avatarImages = await getUserAvatars({ count: 10 });
+
   return (
     <div
       className="
-        
+        overflow-hidden
+        bg-gray-25
+        self-center
+        w-full
+        max-w-[790px]
+        rounded-xl
+        flex
+        flex-col
       "
     >
-      {children}
+      <TemplateScrollRibbon images={templateImages} />
+      <div
+        className="
+          flex
+          my-12
+          flex-col
+          gap-y-7
+          w-full
+          max-w-[600px]
+          mx-auto
+        "
+      >
+        <div
+          className="
+            bg-blue-50
+            rounded-full
+            flex
+            w-fit
+            gap-x-2
+            h-full
+            self-center
+            p-2
+            items-center
+          "
+        >
+          <ImageStack background="bg-blue-50" images={avatarImages} />
+          <span
+            className="
+              text-blue-400
+              font-medium
+            "
+          >
+            Join million others in their product launch journey
+          </span>
+        </div>
+        <div className={className}>{children}</div>
+      </div>
     </div>
   );
 };

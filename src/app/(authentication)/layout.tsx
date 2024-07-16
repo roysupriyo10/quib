@@ -15,7 +15,7 @@ export default function RootLayout({
     <main
       className="
         bg-yellow-50
-        h-screen
+        min-h-screen
         xl:py-20
         xl:px-[120px]
         flex

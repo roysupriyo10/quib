@@ -1,3 +1,10 @@
+import Link from "next/link";
+import {
+  EmailPassword,
+  AuthenticationSection,
+  GoogleButton,
+} from "../_components";
+
 export default function SignIn() {
   return (
     <main
@@ -40,6 +47,60 @@ export default function SignIn() {
           issued to companies incorporated in India
         </h3>
       </div>
+      <AuthenticationSection
+        className="
+          flex
+          flex-col
+          gap-y-8
+        "
+      >
+        <EmailPassword placeholder="Email address" />
+        <div>
+          <span
+            className="
+              w-full
+              flex
+              items-center
+              justify-center
+              gap-x-4
+              before:w-full
+              after:w-full
+              before:h-[1px]
+              after:h-[1px]
+              after:bg-gray-300
+              before:bg-gray-300
+              text-gray-300
+            "
+          >
+            or
+          </span>
+        </div>
+        <GoogleButton />
+        <div
+          className="
+            flex
+            items-center
+            justify-center
+          "
+        >
+          <p
+            className="
+              text-gray-600
+            "
+          >
+            New here?{" "}
+            <Link
+              className="
+                text-yellow-orange-400
+                font-medium
+              "
+              href={`/sign-up`}
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
+      </AuthenticationSection>
     </main>
   );
 }
