@@ -5,7 +5,11 @@ import "./email-password.css";
 import EmailForm from "./email-form";
 import PasswordForm from "./password-form";
 
-const EmailPassword: FC = () => {
+type EmailPasswordProps = {
+  isLogin: boolean;
+};
+
+const EmailPassword: FC<EmailPasswordProps> = ({ isLogin }) => {
   const [emailEntered, setEmailEntered] = useState<{
     validated: boolean;
     email: string;
@@ -59,11 +63,7 @@ const EmailPassword: FC = () => {
           }
         `}
       />
-      {emailEntered.validated && (
-        <PasswordForm
-          email={emailEntered.email}
-        />
-      )}
+      {emailEntered.validated && <PasswordForm email={emailEntered.email} />}
     </div>
   );
 };

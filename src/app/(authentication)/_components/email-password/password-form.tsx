@@ -7,11 +7,13 @@ import { checkLoginPasswordValidityAction } from "../../sign-in/_actions";
 type PasswordFormProps = {
   className?: string;
   style?: CSSProperties;
+  isLogin: boolean;
   email: string;
 };
 
 const PasswordForm: FC<PasswordFormProps> = ({
   className = "",
+    isLogin,
   style,
   email,
 }) => {
@@ -19,7 +21,7 @@ const PasswordForm: FC<PasswordFormProps> = ({
   const [inputValue, setInputValue] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
   const [formState, formAction] = useFormState<AuthFormContextType, FormData>(
-    checkLoginPasswordValidityAction,
+    isLogin ? checkLoginPasswordValidityAction : checkRegistrationPasswordValidityAction,
     {
       message: "",
       name: "",
