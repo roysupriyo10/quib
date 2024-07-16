@@ -63,7 +63,6 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
                 `
             }
             auth-input-label-transition
-            min-h-[1lh]
             leading-7
           `}
         >
@@ -84,9 +83,12 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
                     top-0
                   `
               }
-              ${formState.name === "email" && formState.message.length > 0 ? `
-                text-red-500
-                ` : ``
+              ${
+                formState.name === "email" && formState.message.length > 0
+                  ? `
+                    text-error-700
+                  `
+                  : ``
               }
             `}
           >
@@ -110,10 +112,10 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
               ${
                 isFocused || inputValue.length !== 0
                   ? `
-                    pointer-events-auto
+                    pointer-events-none
                   `
                   : `
-                    pointer-events-none
+                    pointer-events-auto
                   `
               }
               bg-transparent

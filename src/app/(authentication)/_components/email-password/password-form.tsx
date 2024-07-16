@@ -56,7 +56,6 @@ const PasswordForm: FC<PasswordFormProps> = ({ className = "", style }) => {
                 `
             }
             auth-input-label-transition
-            min-h-[1lh]
             leading-7
           `}
         >

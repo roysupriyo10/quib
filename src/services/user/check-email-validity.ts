@@ -1,4 +1,5 @@
 import { HttpException } from "#/classes";
+import { connectDatabase } from "#/lib";
 import { User } from "#/models";
 import { asyncWithError } from "#/utils";
 
@@ -7,6 +8,7 @@ type CheckEmailValidityParams = {
 };
 
 export async function checkEmailValidity(params: CheckEmailValidityParams) {
+  await connectDatabase();
   const [existingUserError, existingUser] = await asyncWithError(
     User.exists({
       email: params.email,
