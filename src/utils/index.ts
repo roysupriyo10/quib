@@ -1,1 +1,1 @@
-export * from "./arrayRange";
+export * from "./array-range";

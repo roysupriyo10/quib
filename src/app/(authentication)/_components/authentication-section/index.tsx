@@ -13,7 +13,7 @@ const AuthenticationSection: FC<AuthenticationSectionProps> = async ({
   className = "",
 }) => {
   const templateImages = await getTemplateImages();
-  const avatarImages = await getUserAvatars({ count: 10 });
+  const avatarImages = await getUserAvatars({ count: 3 });
 
   return (
     <div
@@ -22,7 +22,7 @@ const AuthenticationSection: FC<AuthenticationSectionProps> = async ({
         bg-gray-25
         self-center
         w-full
-        max-w-[790px]
+        md:max-w-[790px]
         rounded-xl
         flex
         flex-col
@@ -33,10 +33,11 @@ const AuthenticationSection: FC<AuthenticationSectionProps> = async ({
         className="
           flex
           my-12
+          px-[18px]
           flex-col
           gap-y-7
           w-full
-          max-w-[600px]
+          md:max-w-[600px]
           mx-auto
         "
       >
@@ -56,11 +57,13 @@ const AuthenticationSection: FC<AuthenticationSectionProps> = async ({
           <ImageStack background="bg-blue-50" images={avatarImages} />
           <span
             className="
+              text-sm
+              xl:text-base
               text-blue-400
               font-medium
             "
           >
-            Join million others in their product launch journey
+            Be a part of a successful launch
           </span>
         </div>
         <div className={className}>{children}</div>

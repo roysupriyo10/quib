@@ -16,7 +16,12 @@ export default function RootLayout({
       className="
         bg-yellow-50
         min-h-screen
-        xl:py-20
+        px-5
+        py-10
+        sm:px-8
+        sm:py-16
+        lg:px-16
+        lg:py-20
         xl:px-[120px]
         flex
         flex-col

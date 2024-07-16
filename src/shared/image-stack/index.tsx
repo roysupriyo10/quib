@@ -41,15 +41,11 @@ const ImageStack: FC<ImageStackProps> = ({
               height: 24,
               width: 24,
               padding: 2,
+              position: "absolute",
+              borderRadius: 9999,
+              objectFit: "cover",
             }}
             className={`
-              rounded-full
-              object-cover
-              absolute
-              p-1
-              bg-transparent
-              top-1/2
-              -translate-y-1/2
               ${background}
             `}
             alt={`stack image ${index + 1}`}

@@ -1,7 +1,8 @@
 "use client";
 
-import { FC, useRef, useState } from "react";
+import { FC, useContext, useRef, useState } from "react";
 import "./email-password.css";
+import { AuthFormContext } from "../../_context";
 
 type EmailPasswordProps = {
   placeholder?: string;
@@ -10,6 +11,8 @@ type EmailPasswordProps = {
 const EmailPassword: FC<EmailPasswordProps> = ({ placeholder }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const {name, message} = useContext(AuthFormContext)
 
   const [emailEntered, setEmailEntered] = useState<boolean>(false);
 

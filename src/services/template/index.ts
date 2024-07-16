@@ -1,1 +1,1 @@
-export * from './getTemplateImages';
+export * from './get-template-images';
