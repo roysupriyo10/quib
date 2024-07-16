@@ -3,6 +3,7 @@ import { useFormState } from "react-dom";
 import { AuthFormContextType } from "#/@types";
 import { ImgRightArrowIcon, ImgShowPasswordIcon } from "#/icons";
 import { checkLoginPasswordValidityAction } from "../../sign-in/_actions";
+import { checkRegistrationPasswordValidityAction } from "../../sign-up/_actions";
 
 type PasswordFormProps = {
   className?: string;

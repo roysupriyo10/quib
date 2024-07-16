@@ -54,7 +54,7 @@ export default function SignIn() {
           gap-y-8
         "
       >
-        <EmailPassword placeholder="Email address" />
+        <EmailPassword isLogin={false} />
         <span
           className="
             w-full

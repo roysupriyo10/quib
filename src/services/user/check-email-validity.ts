@@ -19,6 +19,7 @@ export async function checkEmailValidity(params: CheckEmailValidityParams) {
     throw new HttpException(
       existingUserError.message,
       existingUserError.statusCode,
+      "email"
     );
   }
 
