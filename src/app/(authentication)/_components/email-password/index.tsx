@@ -63,7 +63,9 @@ const EmailPassword: FC<EmailPasswordProps> = ({ isLogin }) => {
           }
         `}
       />
-      {emailEntered.validated && <PasswordForm email={emailEntered.email} />}
+      {emailEntered.validated && <PasswordForm
+        isLogin={isLogin}
+        email={emailEntered.email} />}
     </div>
   );
 };
