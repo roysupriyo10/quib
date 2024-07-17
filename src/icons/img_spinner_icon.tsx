@@ -30,7 +30,7 @@ export const Spinner: FC<AlternateSpinnerProps> = ({
           className !== ""
             ? className
             : `
-              border-yellow-orange-400
+              border-sky-400
             `
         }
       `}
