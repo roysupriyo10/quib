@@ -5,6 +5,7 @@ import { useFormState } from "react-dom";
 import { AuthFormContextType } from "#/@types";
 import { ImgRightArrowIcon } from "#/icons";
 import { checkLoginEmailValidityAction } from "../../sign-in/_actions";
+import { FormSubmitButton } from "#/shared";
 
 type EmailFormProps = {
   showSubmit: boolean;
@@ -17,7 +18,10 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [formState, formAction] = useFormState<AuthFormContextType, FormData>(
+  const [formState, formAction] = useFormState<
+    AuthFormContextType,
+    FormData
+  >(
     async function (formState, formData) {
       const state = await checkLoginEmailValidityAction(formState, formData);
 
@@ -132,7 +136,7 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
         />
       </label>
       {showSubmit && (
-        <button
+        <FormSubmitButton
           className={`
             p-2
             rounded-full
@@ -174,7 +178,7 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
               h-5
             `}
           />
-        </button>
+        </FormSubmitButton>
       )}
     </form>
   );

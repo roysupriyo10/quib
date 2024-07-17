@@ -1,7 +1,7 @@
 import { HttpException } from "#/classes";
 import { connectDatabase } from "#/lib";
 import { User } from "#/models";
-import { asyncWithError } from "#/utils";
+import { asyncWithError, sleep } from "#/utils";
 
 type CheckEmailValidityParams = {
   email: string;
@@ -9,6 +9,9 @@ type CheckEmailValidityParams = {
 
 export async function checkEmailValidity(params: CheckEmailValidityParams) {
   await connectDatabase();
+
+  await sleep(5000)
+
   const [existingUserError, existingUser] = await asyncWithError(
     User.exists({
       email: params.email,
