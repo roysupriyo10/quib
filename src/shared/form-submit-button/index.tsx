@@ -11,20 +11,13 @@ type FormSubmitButtonProps = DetailedHTMLProps<
 
 const FormSubmitButton: FC<FormSubmitButtonProps> = ({
   children,
-  className = "",
+  disabled,
   ...rest
 }) => {
   const { pending: loading } = useFormStatus();
   console.log(loading);
   return (
-    <button
-      className={`
-        ${loading ? `bg-yellow-orange-200` : ``}
-        ${className}
-      `}
-      disabled={loading}
-      {...rest}
-    >
+    <button disabled={loading ? true : disabled} {...rest}>
       {loading ? (
         <Spinner
           className={`

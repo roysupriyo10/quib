@@ -18,10 +18,7 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [formState, formAction] = useFormState<
-    AuthFormContextType,
-    FormData
-  >(
+  const [formState, formAction] = useFormState<AuthFormContextType, FormData>(
     async function (formState, formData) {
       const state = await checkLoginEmailValidityAction(formState, formData);
 
@@ -149,15 +146,16 @@ const EmailForm: FC<EmailFormProps> = ({ onSubmit, showSubmit, onFocus }) => {
                   bg-gray-200
                 `
             }
+            disabled:bg-gray-200
             transition-colors
             duration-150
             ease-linear
           `}
-          onClick={() => {
-            if (inputValue.length < 1) {
-              inputRef.current?.focus();
-            }
-          }}
+          // onClick={() => {
+          //   if (inputValue.length < 1) {
+          //     inputRef.current?.focus();
+          //   }
+          // }}
           type={inputValue.length > 0 ? "submit" : "button"}
         >
           <ImgRightArrowIcon

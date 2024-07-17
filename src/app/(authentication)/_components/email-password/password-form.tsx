@@ -4,6 +4,7 @@ import { AuthFormContextType } from "#/@types";
 import { ImgRightArrowIcon, ImgShowPasswordIcon } from "#/icons";
 import { checkLoginPasswordValidityAction } from "../../sign-in/_actions";
 import { checkRegistrationPasswordValidityAction } from "../../sign-up/_actions";
+import { FormSubmitButton } from "#/shared";
 
 type PasswordFormProps = {
   className?: string;
@@ -14,7 +15,7 @@ type PasswordFormProps = {
 
 const PasswordForm: FC<PasswordFormProps> = ({
   className = "",
-    isLogin,
+  isLogin,
   style,
   email,
 }) => {
@@ -22,7 +23,9 @@ const PasswordForm: FC<PasswordFormProps> = ({
   const [inputValue, setInputValue] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
   const [formState, formAction] = useFormState<AuthFormContextType, FormData>(
-    isLogin ? checkLoginPasswordValidityAction : checkRegistrationPasswordValidityAction,
+    isLogin
+      ? checkLoginPasswordValidityAction
+      : checkRegistrationPasswordValidityAction,
     {
       message: "",
       name: "",
@@ -137,7 +140,7 @@ const PasswordForm: FC<PasswordFormProps> = ({
           slash={showPassword}
         />
       </button>
-      <button
+      <FormSubmitButton
         className={`
           p-2
           rounded-full
@@ -150,16 +153,18 @@ const PasswordForm: FC<PasswordFormProps> = ({
                 bg-gray-200
               `
           }
+          disabled:bg-gray-200
           transition-colors
           duration-150
-          ease-linear
+          ease-in-out
         `}
+        type={inputValue.length > 0 ? "submit" : "button"}
       >
         <ImgRightArrowIcon
           className={`
             transition-colors
             duration-150
-            ease-linear
+            ease-in-out
             ${
               inputValue.length > 0
                 ? `
@@ -173,7 +178,7 @@ const PasswordForm: FC<PasswordFormProps> = ({
             h-5
           `}
         />
-      </button>
+      </FormSubmitButton>
     </form>
   );
 };

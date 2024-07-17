@@ -27,10 +27,10 @@ export const Spinner: FC<AlternateSpinnerProps> = ({
         border-solid
         border-t-transparent
         ${
-          className
+          className !== ""
             ? className
             : `
-              border-sky-500
+              border-yellow-orange-400
             `
         }
       `}

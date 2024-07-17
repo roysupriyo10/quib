@@ -10,7 +10,7 @@ type CheckEmailValidityParams = {
 export async function checkEmailValidity(params: CheckEmailValidityParams) {
   await connectDatabase();
 
-  await sleep(5000)
+  await sleep(50000)
 
   const [existingUserError, existingUser] = await asyncWithError(
     User.exists({
