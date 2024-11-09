@@ -9,6 +9,7 @@ export async function checkLoginEmailValidityAction(
   _state: AuthFormContextType,
   formData: FormData,
 ): Promise<AuthFormContextType> {
+  console.log(Object.fromEntries(formData.entries()))
   try {
     const params = EmailValidityFormValidation.parse({
       email: formData.get("email"),

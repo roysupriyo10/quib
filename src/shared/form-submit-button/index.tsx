@@ -15,7 +15,6 @@ const FormSubmitButton: FC<FormSubmitButtonProps> = ({
   ...rest
 }) => {
   const { pending: loading } = useFormStatus();
-  console.log(loading);
   return (
     <button disabled={loading ? true : disabled} {...rest}>
       {loading ? (
